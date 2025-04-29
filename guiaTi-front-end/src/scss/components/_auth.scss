@@ -1,0 +1,136 @@
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--white-010);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  img{
+    height: 300px;
+  }
+
+  h2{
+    margin-top: 0px;
+    color: var(--black);
+  }
+
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.auth-body {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px var(--gray-010);
+}
+
+.auth-image {
+  flex: 1;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.auth-form {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container h2 {
+  font-size: 1.7rem;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  color: var(--black-010);
+}
+
+.form-container p {
+  font-size: 1rem;
+  margin-bottom: 3px;
+  color: var(--black-010);
+}
+
+.form-container a{
+  text-decoration: none;
+  color: var(--secondary-010);
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  border: 1px solid var(--gray-010);
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: var(--gray-010);
+  box-shadow: 0 0 0 2px var(--gray-010);
+}
+
+.error small {
+  color: var(--red);
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+.btn-submit {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-010);
+}
+

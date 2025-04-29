@@ -1,0 +1,81 @@
+<div class="form-container">
+  <h2>Cadastro</h2>
+
+  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" formControlName="nome" placeholder="Nome" />
+      <div
+        *ngIf="
+          cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.invalid
+        "
+        class="error"
+      >
+        <small>Nome é obrigatório.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="email" formControlName="email" placeholder="Email" />
+      <div
+        *ngIf="
+          cadastroForm.get('email')?.touched &&
+          cadastroForm.get('email')?.invalid
+        "
+        class="error"
+      >
+        <small *ngIf="cadastroForm.get('email')?.errors?.['required']"
+          >Email é obrigatório.</small
+        >
+        <small *ngIf="cadastroForm.get('email')?.errors?.['email']"
+          >Email inválido.</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="password" formControlName="senha" placeholder="Senha" />
+      <div
+        *ngIf="
+          cadastroForm.get('senha')?.touched &&
+          cadastroForm.get('senha')?.invalid
+        "
+        class="error"
+      >
+        <small *ngIf="cadastroForm.get('senha')?.errors?.['required']"
+          >Senha é obrigatória.</small
+        >
+        <small *ngIf="cadastroForm.get('senha')?.errors?.['minlength']"
+          >Senha precisa ter no mínimo 6 caracteres.</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        formControlName="confirmarSenha"
+        placeholder="Confirmar Senha"
+      />
+      <div
+        *ngIf="
+          cadastroForm.get('confirmarSenha')?.touched &&
+          cadastroForm.hasError('senhasDiferentes')
+        "
+        class="error"
+      >
+        <small>As senhas não coincidem.</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit">Cadastrar</button>
+
+    <div *ngIf="mensagemErro" class="error">
+      <small>{{ mensagemErro }}</small>
+    </div>
+
+    <div>
+      <p>Já possui uma conta?</p>
+      <a [routerLink]="'/auth/login'">Fazer login</a>
+    </div>
+  </form>
+</div>
