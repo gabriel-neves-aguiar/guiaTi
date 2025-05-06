@@ -1,1 +1,69 @@
-<p>plataforma-criador works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="enviarCurso()"
+  enctype="multipart/form-data"
+>
+  <!-- Dados do Curso -->
+  <div>
+    <label>Título:</label>
+    <input formControlName="titulo" type="text" required />
+  </div>
+
+  <div>
+    <label>Descrição:</label>
+    <textarea formControlName="descricao" required></textarea>
+  </div>
+
+  <div>
+    <label>Categoria:</label>
+    <input formControlName="categoria" type="text" required />
+  </div>
+
+  <hr />
+
+  <!-- Módulos -->
+  <div formArrayName="modulos">
+    <div
+      *ngFor="let modulo of getModulos().controls; let mIndex = index"
+      [formGroupName]="mIndex"
+    >
+      <h3>Módulo {{ mIndex + 1 }}</h3>
+
+      <label>Nome do Módulo:</label>
+      <input formControlName="nome" type="text" required />
+
+      <!-- Aulas -->
+      <div formArrayName="aulas">
+        <div
+          *ngFor="let aula of getAulas(mIndex).controls; let aIndex = index"
+          [formGroupName]="aIndex"
+        >
+          <p>Aula {{ aIndex + 1 }}</p>
+
+          <label>Nome da Aula:</label>
+          <input formControlName="nome" type="text" required />
+
+          <label>Arquivo da Aula:</label>
+          <input
+            type="file"
+            (change)="onArquivoSelecionado($event, mIndex, aIndex)"
+            required
+          />
+        </div>
+
+        <button type="button" (click)="adicionarAula(mIndex)">
+          Adicionar Aula
+        </button>
+      </div>
+
+      <button type="button" (click)="removerModulo(mIndex)">
+        Remover Módulo
+      </button>
+    </div>
+  </div>
+
+  <button type="button" (click)="adicionarModulo()">Adicionar Módulo</button>
+
+  <hr />
+  <button type="submit">Enviar Curso</button>
+</form>

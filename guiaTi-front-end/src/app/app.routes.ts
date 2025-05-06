@@ -27,8 +27,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' }]
   },
   {
-    path:'cursos',
-    component: CursosComponent
+    path: 'cursos',
+    loadComponent: () => import('./pages/cursos/cursos.component').then(m => m.CursosComponent)
   },
   {
     path:'criador',
