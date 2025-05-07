@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-aulas',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './aulas.component.html',
   styleUrl: './aulas.component.scss'
 })
-export class AulasComponent {
+export class AulasComponent{
 
 }

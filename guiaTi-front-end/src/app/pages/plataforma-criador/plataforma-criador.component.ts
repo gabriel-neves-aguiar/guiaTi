@@ -2,19 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router, RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-plataforma-criador',
-  imports: [CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule,RouterLink],
   templateUrl: './plataforma-criador.component.html',
   styleUrl: './plataforma-criador.component.scss'
 })
 export class PlataformaCriadorComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.form = this.fb.group({
       titulo: ['', Validators.required],
       descricao: ['', Validators.required],
@@ -44,6 +45,11 @@ export class PlataformaCriadorComponent {
 
   adicionarAula(mIndex: number): void {
     this.getAulas(mIndex).push(this.novaAula());
+  }
+
+  removerAula(moduloIndex: number, aulaIndex: number): void {
+    const aulas = this.getAulas(moduloIndex);
+    aulas.removeAt(aulaIndex);
   }
 
   novaAula(): FormGroup {
@@ -80,8 +86,8 @@ export class PlataformaCriadorComponent {
   .subscribe(
     (response: string) => {
       console.log('Resposta do backend: ', response);
-      // Aqui você pode tratar a resposta como uma string
-      alert(response); // Exemplo de exibição
+      alert(response);
+      this.router.navigate(['/cursos']);
     },
     (error: any) => {
       console.error('Erro ao enviar curso: ', error);

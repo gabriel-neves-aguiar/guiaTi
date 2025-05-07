@@ -6,7 +6,7 @@ import { CommonFooterComponent } from './shared/common-footer/common-footer.comp
   selector: 'app-root',
   imports: [RouterOutlet,CommonFooterComponent],
   template: `<router-outlet></router-outlet>
-    <app-common-footer></app-common-footer>
+    <!-- <app-common-footer></app-common-footer> -->
   `
 })
 export class AppComponent {

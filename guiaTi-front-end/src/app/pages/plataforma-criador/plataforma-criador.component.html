@@ -1,42 +1,56 @@
+<header class="header">
+  <nav class="nav-header">
+    <a routerLink="">
+      <img
+        class="logo-header"
+        src="/assets/icons/logo-tema-claro.png"
+        alt="Logo Guia Ti"
+      />
+    </a>
+  </nav>
+</header>
+
+<h2 class="">Formulário de criação de curso</h2>
+
 <form
   [formGroup]="form"
   (ngSubmit)="enviarCurso()"
   enctype="multipart/form-data"
+  class="form-criador"
 >
-  <!-- Dados do Curso -->
-  <div>
+  <div class="curso-area">
     <label>Título:</label>
     <input formControlName="titulo" type="text" required />
   </div>
 
-  <div>
+  <div class="curso-area">
     <label>Descrição:</label>
     <textarea formControlName="descricao" required></textarea>
   </div>
 
-  <div>
+  <div class="curso-area">
     <label>Categoria:</label>
     <input formControlName="categoria" type="text" required />
   </div>
 
   <hr />
 
-  <!-- Módulos -->
-  <div formArrayName="modulos">
+  <div formArrayName="modulos" class="modulos-area">
     <div
       *ngFor="let modulo of getModulos().controls; let mIndex = index"
       [formGroupName]="mIndex"
+      class="modulo"
     >
       <h3>Módulo {{ mIndex + 1 }}</h3>
 
       <label>Nome do Módulo:</label>
       <input formControlName="nome" type="text" required />
 
-      <!-- Aulas -->
-      <div formArrayName="aulas">
+      <div formArrayName="aulas" class="aulas-area">
         <div
           *ngFor="let aula of getAulas(mIndex).controls; let aIndex = index"
           [formGroupName]="aIndex"
+          class="aula"
         >
           <p>Aula {{ aIndex + 1 }}</p>
 
@@ -49,21 +63,38 @@
             (change)="onArquivoSelecionado($event, mIndex, aIndex)"
             required
           />
+          <button
+            type="button"
+            (click)="removerAula(mIndex, aIndex)"
+            class="btn btn-remove"
+          >
+            Remover Aula
+          </button>
         </div>
 
-        <button type="button" (click)="adicionarAula(mIndex)">
+        <button
+          type="button"
+          (click)="adicionarAula(mIndex)"
+          class="btn btn-add"
+        >
           Adicionar Aula
         </button>
       </div>
 
-      <button type="button" (click)="removerModulo(mIndex)">
+      <button
+        type="button"
+        (click)="removerModulo(mIndex)"
+        class="btn btn-remove"
+      >
         Remover Módulo
       </button>
     </div>
   </div>
 
-  <button type="button" (click)="adicionarModulo()">Adicionar Módulo</button>
+  <button type="button" (click)="adicionarModulo()" class="btn btn-add">
+    Adicionar Módulo
+  </button>
 
   <hr />
-  <button type="submit">Enviar Curso</button>
+  <button type="submit" class="btn btn-primary">Enviar Curso</button>
 </form>

@@ -1,0 +1,46 @@
+.curso-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+  gap: 20px;
+  padding: 10px;
+}
+
+.card-curso {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.card-curso:hover {
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dados-curso{
+  padding: 5px;
+  margin: 5px;
+}
+
+.titulo-curso {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.categoria {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.descricao {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.ver-mais {
+  font-size: 0.85rem;
+  color: #007bff;
+  text-decoration: underline;
+}

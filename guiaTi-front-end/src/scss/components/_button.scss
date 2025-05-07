@@ -1,3 +1,15 @@
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
 .btn-header{
   color: var(--white);
   text-decoration: none;
@@ -10,3 +22,32 @@
 .btn-header:hover {
   background-color: var(--primary-010);
   }
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-010) ;
+}
+
+.btn-add {
+  background-color: var(--secondary) ;
+  color: var(--white);
+}
+
+.btn-add:hover {
+  background-color: var(--secondary-010);
+}
+
+.btn-remove {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.btn-remove:hover {
+  background-color: var(--red-010);
+}
+
+

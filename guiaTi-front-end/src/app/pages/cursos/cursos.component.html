@@ -1,27 +1,42 @@
+<header class="header">
+  <nav class="nav-header">
+    <img
+      routerLink="/"
+      class="logo-header"
+      src="/assets/icons/logo-tema-claro.png"
+      alt="Logo Guia Ti"
+    />
+    <ul class="nav-links-header">
+      <li>
+        <a class="btn-header" [routerLink]="'/criador'">Criar Curso</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 <div class="p-4">
-  <h2 class="text-xl font-bold mb-4">Todos os Cursos</h2>
+  <h2 class="titulo">Todos os Cursos</h2>
 
   <input
     [(ngModel)]="filtro"
-    class="border rounded p-2 w-full mb-4"
+    class="input-pesquisa"
     placeholder="Pesquisar por título do curso..."
   />
 
   <div *ngIf="cursosFiltrados.length === 0">Nenhum curso encontrado.</div>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div
-      *ngFor="let curso of cursosFiltrados"
-      class="border rounded p-4 shadow hover:shadow-lg transition"
-    >
-      <h3 class="font-semibold text-lg">{{ curso.titulo }}</h3>
-      <p class="text-sm text-gray-600 mb-2">{{ curso.categoria }}</p>
-      <p class="text-sm mb-3">{{ curso.descricao }}</p>
-      <a
-        [routerLink]="['/cursos', curso.id]"
-        class="text-blue-600 hover:underline"
-        >Ver mais</a
-      >
+  <div class="curso-grid">
+    <div *ngFor="let curso of cursosFiltrados" class="card-curso">
+      <img
+        src="/assets/imagens/img-curso.jpg"
+        alt="Capa do curso"
+        class="capa-curso"
+      />
+      <div class="dados-curso">
+        <h3 class="titulo-curso">{{ curso.titulo }}</h3>
+        <p class="categoria">{{ curso.categoria }}</p>
+        <p class="descricao">{{ curso.descricao }}</p>
+        <!-- <span class="ver-mais">Clique para saber mais</span> -->
+      </div>
     </div>
   </div>
 </div>

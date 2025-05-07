@@ -2,12 +2,11 @@ import { AuthService } from './../../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginComponent } from '../login/login.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
-  imports: [ReactiveFormsModule,RouterLink,CommonModule,LoginComponent],
+  imports: [ReactiveFormsModule,RouterLink,CommonModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })

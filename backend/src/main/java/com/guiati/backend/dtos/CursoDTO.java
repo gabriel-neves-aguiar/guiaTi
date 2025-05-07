@@ -8,7 +8,6 @@ public class CursoDTO {
   private String categoria;
   private List<ModuloDTO> modulos;
 
-  // Getter and Setter methods
   public String getTitulo() {
     return titulo;
   }

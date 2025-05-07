@@ -7,10 +7,15 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { CadastroComponent } from './pages/auth/cadastro/cadastro.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PlataformaCriadorComponent } from './pages/plataforma-criador/plataforma-criador.component';
+import { AulasComponent } from './pages/cursos/aulas/aulas.component';
 
 export const routes: Routes = [
   {
     path:'',
+    component: HomeComponent
+  },
+  {
+    path:'inicio',
     component: HomeComponent
   },
   {
@@ -29,6 +34,10 @@ export const routes: Routes = [
   {
     path: 'cursos',
     loadComponent: () => import('./pages/cursos/cursos.component').then(m => m.CursosComponent)
+  },
+  {
+    path: 'cursos/:id',
+    component: AulasComponent
   },
   {
     path:'criador',

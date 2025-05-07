@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.conteudo {
+  flex: 1;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+li:hover,
+li.ativa {
+  background-color: #dcdcdc;
+  font-weight: bold;
+}

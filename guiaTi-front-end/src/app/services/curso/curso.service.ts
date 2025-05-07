@@ -32,4 +32,7 @@ export class CursoService {
   getCursos(): Observable<Curso[]> {
     return this.http.get<Curso[]>('http://localhost:8080/cursos');
   }
+  buscarPorId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
 }

@@ -6,6 +6,14 @@
 .img-home{
   display: flex;
   width: 100%;
-  max-width: 100%;
+  max-width: 1300px;
+
+}
+
+.capa-curso{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
 }
 
