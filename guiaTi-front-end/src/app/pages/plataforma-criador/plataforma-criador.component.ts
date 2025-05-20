@@ -26,7 +26,7 @@ export class PlataformaCriadorComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.titleService.setTitle('Plataforma do criador | GuiaTI')
+      this.titleService.setTitle('')
   }
 
   getModulos(): FormArray {

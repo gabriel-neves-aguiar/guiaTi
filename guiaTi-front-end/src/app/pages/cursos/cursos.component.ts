@@ -16,13 +16,13 @@ export class CursosComponent implements OnInit {
   cursos: Curso[] = [];
   filtro = '';
 
-  constructor(private cursoService: CursoService, private titleService: Title) {}
+  constructor(private cursoService: CursoService) {}
 
   ngOnInit() {
     this.cursoService.listarCursos().subscribe((res) => {
       this.cursos = res;
     });
-    this.titleService.setTitle('Cursos | GuiaTI')
+
   }
 
   get cursosFiltrados(): Curso[] {

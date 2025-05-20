@@ -11,18 +11,14 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private AuthService: AuthService,private router: Router, private titleService: Title) {
+  constructor(private fb: FormBuilder, private AuthService: AuthService,private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
-  }
-
-  ngOnInit(): void {
-      this.titleService.setTitle('Login | GuiaTI')
   }
 
   onSubmit() {

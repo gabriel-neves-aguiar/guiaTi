@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
   cadastroForm: FormGroup<{
     nome: FormControl<string>;
     email: FormControl<string>;
@@ -24,8 +24,8 @@ export class CadastroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
-    private titleService: Title,
+    private router: Router
+
   ) {
     this.cadastroForm = this.fb.group(
       {
@@ -38,9 +38,7 @@ export class CadastroComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void{
-    this.titleService.setTitle('Cadastro | GuiaTI')
-  }
+
 
   senhasIguais(group: FormGroup) {
     const senha = group.get('senha')?.value;

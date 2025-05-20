@@ -12,7 +12,8 @@ import { AulasComponent } from './pages/cursos/aulas/aulas.component';
 export const routes: Routes = [
   {
     path:'',
-    component: HomeComponent
+    component: HomeComponent,
+    title:'Aprenda sobre tecnologia da forma correta | GuiaTI'
   },
   {
     path:'inicio',
@@ -23,32 +24,39 @@ export const routes: Routes = [
     component: AuthComponent, children:[
       {
         path: 'cadastro',
-        component: CadastroComponent
+        component: CadastroComponent,
+        title:'Cadastro | GuiaTI'
+
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        title:'Login | GuiaTI'
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' }]
   },
   {
     path: 'cursos',
-    loadComponent: () => import('./pages/cursos/cursos.component').then(m => m.CursosComponent)
+    loadComponent: () => import('./pages/cursos/cursos.component').then(m => m.CursosComponent),
+    title:'Cursos disponíveis | GuiaTI'
   },
   {
     path: 'cursos/:id',
-    component: AulasComponent
+    component: AulasComponent,
   },
   {
     path:'criador',
-    component: PlataformaCriadorComponent
+    component: PlataformaCriadorComponent,
+    title: 'Plataforma do criador | GuiaTI'
   },
   {
     path:'perfil',
-    component: PerfilComponent
+    component: PerfilComponent,
+    title:'Meu perfil | GuiaTI'
   },
   {
     path:'**',
-    component: Error404Component
+    component: Error404Component,
+    title: "Caminho não encontrado"
   },
 ];

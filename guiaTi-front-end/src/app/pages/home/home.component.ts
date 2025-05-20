@@ -8,11 +8,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent {
 
-  constructor(private titleService: Title){}
-
-  ngOnInit(): void {
-      this.titleService.setTitle('Aprenda sobre tecnologia da forma correta')
-  }
+  
 }
