@@ -1,6 +1,7 @@
+import { Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './../../../services/auth/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
@@ -10,14 +11,18 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private AuthService: AuthService,private router: Router) {
+  constructor(private fb: FormBuilder, private AuthService: AuthService,private router: Router, private titleService: Title) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  ngOnInit(): void {
+      this.titleService.setTitle('Login | GuiaTI')
   }
 
   onSubmit() {

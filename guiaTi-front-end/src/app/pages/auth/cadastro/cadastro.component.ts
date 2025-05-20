@@ -1,8 +1,9 @@
 import { AuthService } from './../../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
   cadastroForm: FormGroup<{
     nome: FormControl<string>;
     email: FormControl<string>;
@@ -23,7 +24,8 @@ export class CadastroComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private titleService: Title,
   ) {
     this.cadastroForm = this.fb.group(
       {
@@ -34,6 +36,10 @@ export class CadastroComponent {
       },
       { validators: this.senhasIguais }
     );
+  }
+
+  ngOnInit(): void{
+    this.titleService.setTitle('Cadastro | GuiaTI')
   }
 
   senhasIguais(group: FormGroup) {

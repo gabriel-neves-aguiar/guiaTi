@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
   private final UsuarioRepository usuarioRepository;
@@ -23,6 +23,11 @@ public class AuthController {
 
   AuthController(UsuarioRepository usuarioRepository) {
     this.usuarioRepository = usuarioRepository;
+  }
+
+  @RequestMapping(value = "/cadastro", method = RequestMethod.OPTIONS)
+  public ResponseEntity<?> handleOptions() {
+    return ResponseEntity.ok().build();
   }
 
   @PostMapping("/cadastro")

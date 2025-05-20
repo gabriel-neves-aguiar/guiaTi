@@ -21,7 +21,7 @@ export interface CursoDTO {
 
 @Injectable({ providedIn: 'root' })
 export class CursoService {
-  private apiUrl = 'http://localhost:8080/cursos';
+  private apiUrl = 'http://localhost:8080/api/cursos';
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +30,7 @@ export class CursoService {
   }
 
   getCursos(): Observable<Curso[]> {
-    return this.http.get<Curso[]>('http://localhost:8080/cursos');
+    return this.http.get<Curso[]>('http://localhost:8080/api/cursos');
   }
   buscarPorId(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);

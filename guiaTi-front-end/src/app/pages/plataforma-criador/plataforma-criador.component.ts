@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -12,16 +13,20 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './plataforma-criador.component.html',
   styleUrl: './plataforma-criador.component.scss'
 })
-export class PlataformaCriadorComponent {
+export class PlataformaCriadorComponent implements OnInit{
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private titleService: Title) {
     this.form = this.fb.group({
       titulo: ['', Validators.required],
       descricao: ['', Validators.required],
       categoria: ['', Validators.required],
       modulos: this.fb.array([]),
     });
+  }
+
+  ngOnInit(): void {
+      this.titleService.setTitle('Plataforma do criador | GuiaTI')
   }
 
   getModulos(): FormArray {
@@ -82,7 +87,7 @@ export class PlataformaCriadorComponent {
       });
     });
 
-    this.http.post('http://localhost:8080/cursos', formData, { responseType: 'text' })
+    this.http.post('http://localhost:8080/api/cursos', formData, { responseType: 'text' })
   .subscribe(
     (response: string) => {
       console.log('Resposta do backend: ', response);

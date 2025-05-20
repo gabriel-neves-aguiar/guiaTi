@@ -20,7 +20,8 @@ import com.guiati.backend.models.Curso;
 import com.guiati.backend.services.CursoService;
 
 @RestController
-@RequestMapping("/cursos")
+@RequestMapping("/api/cursos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CursoController {
 
   @Autowired

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CursoService } from '../../services/curso/curso.service';
 import { CommonModule } from '@angular/common';
 import { Curso } from '../../interfaces/curso';
 import { FormsModule} from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cursos',
@@ -11,16 +12,17 @@ import { FormsModule} from '@angular/forms';
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.scss'
 })
-export class CursosComponent {
+export class CursosComponent implements OnInit {
   cursos: Curso[] = [];
   filtro = '';
 
-  constructor(private cursoService: CursoService) {}
+  constructor(private cursoService: CursoService, private titleService: Title) {}
 
   ngOnInit() {
     this.cursoService.listarCursos().subscribe((res) => {
       this.cursos = res;
     });
+    this.titleService.setTitle('Cursos | GuiaTI')
   }
 
   get cursosFiltrados(): Curso[] {
