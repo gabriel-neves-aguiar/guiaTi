@@ -57,6 +57,6 @@ export const routes: Routes = [
   {
     path:'**',
     component: Error404Component,
-    title: "Caminho não encontrado"
+    title: "Página não encontrado"
   },
 ];
