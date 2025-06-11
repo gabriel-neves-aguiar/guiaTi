@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CursoService } from '../../services/curso/curso.service';
 import { CommonModule } from '@angular/common';
 import { Curso } from '../../interfaces/curso';
 import { FormsModule} from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-cursos',
@@ -16,7 +17,7 @@ export class CursosComponent implements OnInit {
   cursos: Curso[] = [];
   filtro = '';
 
-  constructor(private cursoService: CursoService) {}
+  constructor(private cursoService: CursoService, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.cursoService.listarCursos().subscribe((res) => {
@@ -29,6 +30,11 @@ export class CursosComponent implements OnInit {
     return this.cursos.filter((curso) =>
       curso.titulo.toLowerCase().includes(this.filtro.toLowerCase())
     );
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 }
 

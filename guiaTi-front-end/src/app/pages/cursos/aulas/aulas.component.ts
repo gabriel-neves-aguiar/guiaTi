@@ -73,7 +73,6 @@ carregarCurso(id: number): void {
     return '';
   }
     const arquivo = this.aulaSelecionada?.arquivoPath;
-    // .split(/uploads[\/\\]aulas[\/\\]/)[1];
     return `http://localhost:8080/api/aulas/video/${arquivo}`;
     }
 

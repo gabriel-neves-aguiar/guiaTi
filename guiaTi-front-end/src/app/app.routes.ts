@@ -8,6 +8,7 @@ import { CadastroComponent } from './pages/auth/cadastro/cadastro.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { PlataformaCriadorComponent } from './pages/plataforma-criador/plataforma-criador.component';
 import { AulasComponent } from './pages/cursos/aulas/aulas.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -38,20 +39,24 @@ export const routes: Routes = [
   {
     path: 'cursos',
     loadComponent: () => import('./pages/cursos/cursos.component').then(m => m.CursosComponent),
+    canActivate: [authGuard],
     title:'Cursos disponíveis | GuiaTI'
   },
   {
     path: 'cursos/:id/aulas',
     component: AulasComponent,
+    canActivate: [authGuard],
   },
   {
     path:'criador',
     component: PlataformaCriadorComponent,
+    canActivate: [authGuard],
     title: 'Plataforma do criador | GuiaTI'
   },
   {
     path:'perfil',
     component: PerfilComponent,
+    canActivate: [authGuard],
     title:'Meu perfil | GuiaTI'
   },
   {
