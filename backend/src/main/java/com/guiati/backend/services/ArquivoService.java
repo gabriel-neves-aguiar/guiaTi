@@ -24,7 +24,7 @@ import java.util.UUID;
 
 @Service
 public class ArquivoService {
-  private final Path pastaUpload = Paths.get("uploads/aulas");
+  private final Path pastaUpload = Paths.get("C:/Users/Public/uploads/aulas");
 
   public ArquivoService() throws IOException {
     Files.createDirectories(pastaUpload);
@@ -34,6 +34,27 @@ public class ArquivoService {
     String nomeArquivo = UUID.randomUUID() + "-" + file.getOriginalFilename();
     Path destino = pastaUpload.resolve(nomeArquivo);
     Files.copy(file.getInputStream(), destino, StandardCopyOption.REPLACE_EXISTING);
-    return destino.toString();
+    return nomeArquivo;
+  }
+
+  public void deletarArquivo(String nomeArquivo) throws IOException {
+    Path caminho = pastaUpload.resolve(nomeArquivo);
+    Files.deleteIfExists(caminho);
+  }
+
+  // public void deletarArquivo(String caminhoRelativo) throws IOException {
+  // if (caminhoRelativo != null && !caminhoRelativo.isBlank()) {
+  // Path caminhoCompleto = Paths.get(caminhoRelativo);
+  // if (Files.exists(caminhoCompleto)) {
+  // Files.delete(caminhoCompleto);
+  // } else {
+  // System.out.println("Arquivo não encontrado para deletar: " +
+  // caminhoCompleto.toString());
+  // }
+  // }
+  // }
+
+  public Path getCaminhoArquivo(String nomeArquivo) {
+    return pastaUpload.resolve(nomeArquivo);
   }
 }

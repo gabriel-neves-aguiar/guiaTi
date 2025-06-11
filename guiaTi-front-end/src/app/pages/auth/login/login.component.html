@@ -4,41 +4,33 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <input type="email" formControlName="email" placeholder="Email" />
-      <div
-        *ngIf="
-          loginForm.get('email')?.touched && loginForm.get('email')?.invalid
-        "
-      >
-        <small *ngIf="loginForm.get('email')?.errors?.['required']"
-          >Email é obrigatório.</small
-        >
-        <small *ngIf="loginForm.get('email')?.errors?.['email']"
-          >Email inválido.</small
-        >
+
+      @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+      <div class="error">
+        @if(loginForm.get('email')?.errors?.['required']){
+        <small> Email é obrigatório. </small>
+        } @if(loginForm.get('email')?.errors?.['email']){
+        <small> Email inválido. </small>
+        }
       </div>
+      }
     </div>
 
     <div class="form-group">
       <input type="password" formControlName="senha" placeholder="Senha" />
-      <div
-        *ngIf="
-          loginForm.get('senha')?.touched && loginForm.get('senha')?.invalid
-        "
-      >
-        <small
-          *ngIf="loginForm.get('senha')?.errors?.['required']"
-          class="error"
-          >Senha é obrigatória.</small
-        >
-        <small
-          *ngIf="loginForm.get('senha')?.errors?.['minlength']"
-          class="error"
-          >Senha precisa ter no mínimo 6 caracteres.</small
-        >
+
+      @if(loginForm.get('senha')?.touched && loginForm.get('senha')?.invalid) {
+      <div class="error">
+        @if(loginForm.get('senha')?.errors?.['required']){
+        <small class="error">Senha é obrigatória.</small>
+        } @if(loginForm.get('senha')?.errors?.['minlength']){
+        <small class="error">Senha precisa ter no mínimo 6 caracteres.</small>
+        }
       </div>
+      }
     </div>
 
-    <button type="submit" class="btn-submit" (click)="onSubmit()">
+    <button type="submit" class="btn btn-submit" (click)="onSubmit()">
       Entrar
     </button>
 

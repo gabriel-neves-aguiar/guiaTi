@@ -1,10 +1,17 @@
 package com.guiati.backend.dtos;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class AulaDTO {
+  private Long id;
   private String nome;
-  private MultipartFile arquivo;
+  private String arquivoPath; // usado no retorno ao Angular
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getNome() {
     return nome;
@@ -14,12 +21,12 @@ public class AulaDTO {
     this.nome = nome;
   }
 
-  public MultipartFile getArquivo() {
-    return arquivo;
+  public String getArquivoPath() {
+    return arquivoPath;
   }
 
-  public void setArquivo(MultipartFile arquivo) {
-    this.arquivo = arquivo;
+  public void setArquivoPath(String arquivoPath) {
+    this.arquivoPath = arquivoPath;
   }
 
 }

@@ -4,15 +4,20 @@ import { Observable } from 'rxjs';
 import { Curso } from '../../interfaces/curso';
 
 export interface AulaDTO {
-  titulo: string;
+  id: number;
+  nome: string;
+  arquivoPath: string;
 }
 
 export interface ModuloDTO {
+  id:number;
   nome: string;
   aulas: AulaDTO[];
+  expanded:boolean;
 }
 
 export interface CursoDTO {
+  id:number;
   titulo: string;
   descricao: string;
   categoria: string;
@@ -32,7 +37,7 @@ export class CursoService {
   getCursos(): Observable<Curso[]> {
     return this.http.get<Curso[]>('http://localhost:8080/api/cursos');
   }
-  buscarPorId(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  buscarPorId(id: number): Observable<CursoDTO> {
+    return this.http.get<CursoDTO>(`${this.apiUrl}/${id}`);
   }
 }

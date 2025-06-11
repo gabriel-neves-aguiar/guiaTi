@@ -3,10 +3,19 @@ package com.guiati.backend.dtos;
 import java.util.List;
 
 public class CursoDTO {
+  private Long id;
   private String titulo;
   private String descricao;
   private String categoria;
   private List<ModuloDTO> modulos;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getTitulo() {
     return titulo;

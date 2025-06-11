@@ -21,24 +21,29 @@
   <input
     [(ngModel)]="filtro"
     class="input-pesquisa"
-    placeholder="Pesquisar por título do curso..."
+    placeholder="Pesquisar por título do curso"
   />
 
-  <div *ngIf="cursosFiltrados.length === 0">Nenhum curso encontrado.</div>
+  @if(cursosFiltrados.length === 0){
+  <div>Nenhum curso encontrado.</div>
+  }
 
   <div class="curso-grid">
-    <div *ngFor="let curso of cursosFiltrados" class="card-curso">
-      <img
-        src="/assets/imagens/img-curso.jpg"
-        alt="Capa do curso"
-        class="capa-curso"
-      />
-      <div class="dados-curso">
-        <h3 class="titulo-curso">{{ curso.titulo }}</h3>
-        <p class="categoria">{{ curso.categoria }}</p>
-        <p class="descricao">{{ curso.descricao }}</p>
-        <!-- <span class="ver-mais">Clique para saber mais</span> -->
+    @for (curso of cursosFiltrados; track curso.id) {
+    <a [routerLink]="['/cursos', curso.id, 'aulas']">
+      <div class="card-curso">
+        <img
+          src="/assets/imagens/img-curso.jpg"
+          alt="Capa do curso"
+          class="capa-curso"
+        />
+        <div class="dados-curso">
+          <h3 class="titulo-curso">{{ curso.titulo }}</h3>
+          <p class="categoria">{{ curso.categoria }}</p>
+          <p class="descricao">{{ curso.descricao }}</p>
+        </div>
       </div>
-    </div>
+    </a>
+    }
   </div>
 </div>

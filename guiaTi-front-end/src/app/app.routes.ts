@@ -41,7 +41,7 @@ export const routes: Routes = [
     title:'Cursos disponíveis | GuiaTI'
   },
   {
-    path: 'cursos/:id',
+    path: 'cursos/:id/aulas',
     component: AulasComponent,
   },
   {

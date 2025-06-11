@@ -1,0 +1,10 @@
+.icone-expandir {
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+
+  path {
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+}

@@ -4,50 +4,43 @@
   <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <input type="text" formControlName="nome" placeholder="Nome" />
-      <div
-        *ngIf="
-          cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.invalid
-        "
-        class="error"
-      >
+
+      @if(cadastroForm.get('nome')?.touched &&
+      cadastroForm.get('nome')?.invalid) {
+      <div class="error">
         <small>Nome é obrigatório.</small>
       </div>
+      }
     </div>
 
     <div class="form-group">
       <input type="email" formControlName="email" placeholder="Email" />
-      <div
-        *ngIf="
-          cadastroForm.get('email')?.touched &&
-          cadastroForm.get('email')?.invalid
-        "
-        class="error"
-      >
-        <small *ngIf="cadastroForm.get('email')?.errors?.['required']"
-          >Email é obrigatório.</small
-        >
-        <small *ngIf="cadastroForm.get('email')?.errors?.['email']"
-          >Email inválido.</small
-        >
+
+      @if(cadastroForm.get('email')?.touched &&
+      cadastroForm.get('email')?.invalid) {
+      <div class="error">
+        @if(cadastroForm.get('email')?.errors?.['required']){
+        <small> Email é obrigatório. </small>
+        } @if(cadastroForm.get('email')?.errors?.['email']){
+        <small> Email inválido. </small>
+        }
       </div>
+      }
     </div>
 
     <div class="form-group">
       <input type="password" formControlName="senha" placeholder="Senha" />
-      <div
-        *ngIf="
-          cadastroForm.get('senha')?.touched &&
-          cadastroForm.get('senha')?.invalid
-        "
-        class="error"
-      >
-        <small *ngIf="cadastroForm.get('senha')?.errors?.['required']"
-          >Senha é obrigatória.</small
-        >
-        <small *ngIf="cadastroForm.get('senha')?.errors?.['minlength']"
-          >Senha precisa ter no mínimo 6 caracteres.</small
-        >
+
+      @if(cadastroForm.get('senha')?.touched &&
+      cadastroForm.get('senha')?.invalid){
+      <div class="error">
+        @if(cadastroForm.get('senha')?.errors?.['required']){
+        <small> Senha é obrigatória. </small>
+        } @if(cadastroForm.get('senha')?.errors?.['minlength']){
+        <small> Senha precisa ter no mínimo 6 caracteres. </small>
+        }
       </div>
+      }
     </div>
 
     <div class="form-group">
@@ -56,22 +49,22 @@
         formControlName="confirmarSenha"
         placeholder="Confirmar Senha"
       />
-      <div
-        *ngIf="
-          cadastroForm.get('confirmarSenha')?.touched &&
-          cadastroForm.hasError('senhasDiferentes')
-        "
-        class="error"
-      >
+
+      @if(cadastroForm.get('confirmarSenha')?.touched &&
+      cadastroForm.hasError('senhasDiferentes')){
+      <div class="error">
         <small>As senhas não coincidem.</small>
       </div>
+      }
     </div>
 
-    <button type="submit" class="btn-submit">Cadastrar</button>
+    <button type="submit" class="btn btn-submit">Cadastrar</button>
 
-    <div *ngIf="mensagemErro" class="error">
+    @if(mensagemErro){
+    <div class="error">
       <small>{{ mensagemErro }}</small>
     </div>
+    }
 
     <div>
       <p>Já possui uma conta?</p>
